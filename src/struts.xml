@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+     <constant name="struts.i18n.encoding" value="utf-8"/>
+     <constant name="struts.devMode" value="true" />
+     
+     
+     <constant name="struts.objectFactory" value="spring" />  
+     
+     <package name="default" extends="struts-default"> 
+         <!-- 配置一个拦截器 -->
+	     <interceptors>
+	       
+	        <interceptor name="LoginInterceptors" class="com.clothes.util.LoginInterceptors">
+	          <!-- excludeName 是例外的action，也就是下面这几个action不会被拦截-->
+	           <param name="excludeName">master_login,master_reg,customer_login,customer_reg,clothes_queryClothes</param>
+	           <!-- customer可以作为参数传递，取自session.put("customer", db_customer);中的这个customer-->
+	           <param name="sessionName">customer</param>
+	        </interceptor>    
+
+	        <interceptor-stack name="myInterceptors">
+	           <interceptor-ref name="defaultStack"></interceptor-ref>   
+	           <interceptor-ref name="LoginInterceptors"/>                  
+	        </interceptor-stack>      
+	     </interceptors>
+	    
+	     <default-interceptor-ref name="myInterceptors"></default-interceptor-ref>
+
+	     <global-results>
+	          <result name="login" type="redirect">/login.jsp</result>
+	          <result name="success" type="redirect">${prePage}</result> 
+	     </global-results>
+     </package>
+     <package name="clothes" namespace="/clothes" extends="default">
+             <action name="clothes_*" class="clothesAction" method="{1}">
+                    <result name="message">/message.jsp</result>
+                    <result name="show_view">/mainnew.jsp</result>
+                    <result name="detail_view">/detail.jsp</result>
+                    <result name="edit_view">/edit.jsp</result>
+                    <result name="delete_message">/delete_message.jsp</result>
+                    <result name="edit_message">/edit_message.jsp</result>
+             </action>
+     
+     </package>
+     <package name="customer" namespace="/customer" extends="struts-default" >
+        <action name="customer_*" class="customerAction" method="{1}">
+            <result name="success" type="chain">
+              <param name="actionName">clothes_showClothes</param> 
+                 <param name="namespace">/clothes</param>
+                 <param name="param1">${customer.name}</param>
+            </result>
+            <result name="input">/login.jsp</result>
+            <result name="show_view">/mainnew.jsp</result>
+        </action>  
+	 </package>
+	  <package name="master" namespace="/master" extends="struts-default" >
+	     <action name="master_*" class="masterAction" method="{1}">
+	        <result name="success" type="chain">
+              <param name="actionName">clothes_showClothes</param> 
+                 <param name="namespace">/clothes</param>
+                 <param name="param1">${master.name}</param>
+            </result>
+            <result name="input">/masterlogin.jsp</result>
+            <result name="show_view">/mainnew.jsp</result>
+	     </action>
+	  </package>
+	 <package name="order" namespace="/order" extends="default" >
+	    <action name="order_*" class="orderAction" method="{1}">
+	       <result name="order_message">/order_message.jsp</result>
+	       <result name="show_view">/order_main.jsp</result>
+	       <result name="detail_view">/order_detail.jsp</result>
+	    </action>
+	 </package>
+</struts>
