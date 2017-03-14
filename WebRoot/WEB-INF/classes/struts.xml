@@ -16,10 +16,10 @@
 	       
 	        <interceptor name="LoginInterceptors" class="com.clothes.util.LoginInterceptors">
 	          <!-- excludeName 是例外的action，也就是下面这几个action不会被拦截-->
-	           <param name="excludeName">master_login,master_reg,customer_login,customer_reg,clothes_queryClothes</param>
+	           <param name="excludeName">customer_login,customer_reg,clothes_queryClothes</param>
 	           <!-- customer可以作为参数传递，取自session.put("customer", db_customer);中的这个customer-->
 	           <param name="sessionName">customer</param>
-	        </interceptor>    
+	        </interceptor>     
 
 	        <interceptor-stack name="myInterceptors">
 	           <interceptor-ref name="defaultStack"></interceptor-ref>   
