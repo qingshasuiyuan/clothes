@@ -18,12 +18,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="Refresh" content="2;url=clothes/clothes_showClothes">
+	
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	
+
   </head>
   
-  <body style="background:url('img/bg.jpg') no-repeat;">
+  <body>
+  <div id="li">
    <p>服装名称：<c:out value="${clothes.clothestype}"></c:out></p>
    <p>单价：<c:out value="${clothes.unitprice}"></c:out></p>
+   </div>
   </body>
 </html>

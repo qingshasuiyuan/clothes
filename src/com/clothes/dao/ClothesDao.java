@@ -16,10 +16,10 @@ import com.clothes.model.Clothes;
 @Service @Transactional
 public class ClothesDao {
 	@Resource SessionFactory factory;
-	 
+	 /*ÿҳ��ʾ��¼��Ŀ*/
     private final int PAGE_SIZE = 10;
 
-    
+    /*�����ѯ���ܵ�ҳ��*/
     private int totalPage;
     public void setTotalPage(int totalPage) {
         this.totalPage = totalPage;
@@ -28,7 +28,7 @@ public class ClothesDao {
         return totalPage;
     }
 
-    
+    /*�����ѯ�����ܼ�¼��*/
     private int recordNumber;
     public void setRecordNumber(int recordNumber) {
         this.recordNumber = recordNumber;

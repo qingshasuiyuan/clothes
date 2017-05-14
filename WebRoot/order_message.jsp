@@ -17,11 +17,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
 	<meta http-equiv="Refresh" content="1;url=order/order_showOrder?customer.name=${customer.name}">
+	
 	<link rel="stylesheet" type="text/css" href="index.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+
   </head>
   
-  <body style="background:url('img/bg.jpg') no-repeat;">
+  <body>
  
       成功下单。
   </body>

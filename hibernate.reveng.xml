@@ -14,14 +14,8 @@
 			<generator class="increment"></generator>
 		</primary-key>
 	</table>
-	<table name="t_order" catalog="clothes"
-		class="com.clothes.model.Order">
-		<primary-key>
-			<generator class="increment"></generator>
-		</primary-key>
-	</table>
-<table name="t_master" catalog="clothes"
-	class="com.clothes.model.Master">
+<table name="t_order" catalog="clothes"
+	class="com.clothes.model.Order">
 	<primary-key>
 		<generator class="increment"></generator>
 	</primary-key>

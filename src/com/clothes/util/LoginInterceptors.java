@@ -1,3 +1,4 @@
+
 package com.clothes.util;
 
 import java.util.ArrayList;
@@ -10,9 +11,8 @@ import org.apache.struts2.ServletActionContext;
 
 import com.clothes.model.Customer;
 import com.opensymphony.xwork2.ActionInvocation;
-import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 
-public class LoginInterceptors extends AbstractInterceptor{
+public class LoginInterceptors {
 	private static final long serialVersionUID = 1L;
 
 	   private String sessionName; //用来传递当前用户的信息
@@ -41,18 +41,12 @@ public class LoginInterceptors extends AbstractInterceptor{
 	     return list;
 
 	   }
-	   
-	   @Override
 
 	   public void init() {
 
 	      list = strlsit(excludeName);
 
 	   }
-	   
-	   @Override
-	   
-	   
 
 	   public String intercept(ActionInvocation invocation) throws Exception {
 
@@ -75,13 +69,13 @@ public class LoginInterceptors extends AbstractInterceptor{
 	        
 	        //得到当前用户（当前用户在login方法中已经被放入session中，见CustomerAction中的login方法）
 	        Customer customer = (Customer) session.get(sessionName);   
-	       
+	        
 	           if(customer==null){   //如果customer不存在，就说明登录不成功，还转回login
 	        	     // 获取HttpServletRequest对象  
 	                 HttpServletRequest req = ServletActionContext.getRequest();  
 
 	                 // 获取此请求的地址 ，也就是获取拦截前要跳转的地址，进行跳转
-	                 String path = req.getRequestURI().replaceAll("/clothes", "");
+	                 String path = req.getRequestURI().replaceAll("/foodProject", "");
 	                 System.out.println("path:" + path);
 	        
 	                 // 存入session，这个参数在struts.xml中会作为参数出现  
@@ -97,8 +91,6 @@ public class LoginInterceptors extends AbstractInterceptor{
 	     }
 
 	   }
-	   
-	   
 
 	   public String getSessionName() {
 

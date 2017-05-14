@@ -17,18 +17,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-<link rel="stylesheet" type="text/css" href="index.css">
+	<link rel="stylesheet"  href="css/index.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap.css">
+	
+	
 
   </head>
   
-  <body style="background:url('img/bg.jpg') no-repeat;">
+  <body>
     <s:form action="clothes/clothes_editClothes">
        <h1>编辑服装</h1>
+       <div id="info">
        <s:hidden name="clothes.clothesid"></s:hidden>
        <s:textfield name="clothes.clothestype" label="服装名称"></s:textfield>
        <s:textfield name="clothes.unitprice" label="单价"></s:textfield>
        <s:submit value="提交"></s:submit>
+       </div>
      </s:form>
+     
   </body>
 </html>

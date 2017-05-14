@@ -38,7 +38,6 @@
 			      <value>com/clothes/model/Customer.hbm.xml</value>
 			      <value>com/clothes/model/Clothes.hbm.xml</value>
 			      <value>com/clothes/model/Order.hbm.xml</value>
-			      <value>com/clothes/model/Master.hbm.xml</value>
   
 			    </list>
 		</property>
